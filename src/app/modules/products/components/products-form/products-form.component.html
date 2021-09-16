@@ -1,0 +1,46 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+	<mat-card>
+		<mat-card-title>Cadastro de Produto</mat-card-title>
+		<mat-card-content>
+			<p>
+				<mat-form-field appearance="fill" floatLabel="always">
+					<mat-label>Código do Produto</mat-label>
+					<input matInput type="number" placeholder="0" min="0" formControlName="productCode">
+					<span matPrefix>#</span> 
+				</mat-form-field>
+			</p>
+			<p>
+				<mat-form-field appearance="fill">
+					<mat-label>Nome do Produto</mat-label>
+					<input matInput formControlName="name">
+				</mat-form-field>
+			</p>
+			<p>
+				<label>Fabricação do produto: </label>
+				<mat-radio-group formControlName="fabrication">
+					<mat-radio-button value="nacional">Nacional</mat-radio-button>
+					<mat-radio-button value="importado">Importado</mat-radio-button>
+				</mat-radio-group>
+			</p>
+
+			<p>
+				<mat-form-field appearance="fill">
+					<mat-label>Tamanho do produto</mat-label>
+					<input matInput type="number" placeholder="0" min="0" formControlName="size">
+				</mat-form-field>
+			</p>
+			<p>
+				<mat-form-field appearance="fill" floatLabel="always">
+					<mat-label>Valor</mat-label>
+					<input matInput type="number" class="text-right" placeholder="0" min="0" formControlName="value">
+					<span matPrefix>$&nbsp;</span>
+					<span matSuffix>.00</span>
+				</mat-form-field>
+			</p>
+		</mat-card-content>
+		<mat-card-actions>
+			<button mat-button (click)="cancel()">Cancelar</button>
+			<button mat-button type="submit" [disabled]="!productForm.valid">Cadastrar</button>
+		</mat-card-actions>
+	</mat-card>
+</form>
