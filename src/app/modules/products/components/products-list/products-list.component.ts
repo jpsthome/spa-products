@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ProductsService } from './../../services/products.service';
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product.model';
@@ -14,7 +15,8 @@ export class ProductsListComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -25,7 +27,6 @@ export class ProductsListComponent implements OnInit {
     this.productsService.getAll().subscribe(
       (products) => {
         this.products = products;
-        console.log(products);
       },
       (error) => {
         console.log(error);
@@ -44,6 +45,10 @@ export class ProductsListComponent implements OnInit {
     );
   }
 
+  editProduct(id: string) {
+    this._router.navigate(['/products', id]);
+  }
+
   confirmDialog(id: string): void {
     if (this.dialog.openDialogs.length == 0) {
       const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
@@ -51,7 +56,6 @@ export class ProductsListComponent implements OnInit {
       });
 
       dialogRef.afterClosed().subscribe((result) => {
-        console.log('The dialog was closed');
         if (result) this.deleteProduct(id);
       });
     }

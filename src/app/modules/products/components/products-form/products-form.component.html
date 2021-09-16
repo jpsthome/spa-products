@@ -1,6 +1,7 @@
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
 	<mat-card>
-		<mat-card-title>Cadastro de Produto</mat-card-title>
+
+		<mat-card-title>{{isEdit ? "Edição" : "Cadastro"}} de Produto</mat-card-title>
 		<mat-card-content>
 			<p>
 				<mat-form-field appearance="fill" floatLabel="always">
@@ -40,7 +41,13 @@
 		</mat-card-content>
 		<mat-card-actions>
 			<button mat-button (click)="cancel()">Cancelar</button>
-			<button mat-button type="submit" [disabled]="!productForm.valid">Cadastrar</button>
+			<ng-container *ngIf="isEdit; else isAdd">
+				<button mat-button type="submit" [disabled]="!productForm.dirty">Editar</button>
+			</ng-container>
+			<ng-template #isAdd>
+				<button mat-button type="submit" [disabled]="!productForm.valid">Cadastrar</button>
+			</ng-template>
+			
 		</mat-card-actions>
 	</mat-card>
 </form>
