@@ -1,3 +1,4 @@
+import { MaterialModule } from './material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
@@ -20,6 +21,6 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatListModule,
   ],
-  exports: [FooterComponent, HeaderComponent],
+  exports: [FooterComponent, HeaderComponent, MaterialModule],
 })
 export class CoreModule {}
