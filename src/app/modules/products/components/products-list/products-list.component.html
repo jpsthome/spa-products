@@ -13,7 +13,10 @@
     <p matLine>
       <span> Valor: R{{prod.size | currency}} </span>
     </p>
-		
+    <button mat-icon-button (click)="confirmDialog(prod.id!)">
+      <mat-icon>delete</mat-icon>
+    </button>
+    	
 		<mat-divider></mat-divider>
 	</mat-list-item>
  </mat-list>
