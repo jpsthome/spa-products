@@ -11,11 +11,14 @@
       <span> Tamanho do produto: {{prod.size}} </span>
     </p>
     <p matLine>
-      <span> Valor: R{{prod.size | currency}} </span>
+      <span> Valor: R{{prod.value | currency}} </span>
     </p>
     <button mat-icon-button (click)="confirmDialog(prod.id!)">
       <mat-icon>delete</mat-icon>
     </button>
+    <button mat-icon-button (click)="editProduct(prod.id!)">
+      <mat-icon>edit</mat-icon>
+    </button>	
     	
 		<mat-divider></mat-divider>
 	</mat-list-item>
