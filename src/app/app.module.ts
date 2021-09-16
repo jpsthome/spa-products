@@ -1,3 +1,4 @@
+import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';
@@ -18,6 +19,7 @@ import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor
     CoreModule,
     SharedModule,
     HttpClientModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [
     {
