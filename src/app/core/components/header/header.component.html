@@ -1,9 +1,14 @@
 <mat-toolbar color="primary" >
   <span>VipCommerce - SPA</span>
   <span class="spacer"></span>
-  <a mat-button>
+  <button mat-button [matMenuTriggerFor]="productsMenu">
     Produtos
-  </a>
+  </button>
+  <mat-menu #productsMenu="matMenu">
+    <a mat-menu-item [routerLink]="['/products/new']">Cadastrar novo produto</a>
+    <a mat-menu-item [routerLink]="['/products']">Listar produtos</a>
+  </mat-menu>
+
   <a mat-button>
     Clientes
   </a>
