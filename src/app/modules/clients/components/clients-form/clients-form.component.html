@@ -1,0 +1,54 @@
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+	<mat-card>
+
+		<mat-card-title>{{isEdit ? "Edição" : "Cadastro"}} de Cliente</mat-card-title>
+		<mat-card-content>
+			<p>
+				<mat-form-field appearance="fill" floatLabel="always">
+					<mat-label>Código do Cliente</mat-label>
+					<input matInput type="number" placeholder="0" min="0" formControlName="clientCode">
+					<span matPrefix>#</span> 
+				</mat-form-field>
+			</p>
+
+			<p>
+				<mat-form-field appearance="fill">
+					<mat-label>Nome do Cliente</mat-label>
+					<input matInput formControlName="name">
+				</mat-form-field>
+			</p>
+			
+			<p>
+				<label>Sexo: </label>
+				<mat-radio-group formControlName="sex">
+					<mat-radio-button value="Masculino">Masculino</mat-radio-button>
+					<mat-radio-button value="Feminino">Feminino</mat-radio-button>
+					<mat-radio-button value="Outro">Outro</mat-radio-button>
+				</mat-radio-group>
+			</p>
+			
+			<p>
+				<mat-form-field appearance="fill">
+					<mat-label>CPF do Cliente</mat-label>
+					<input matInput formControlName="cpf" mask="000.000.000-00">
+				</mat-form-field>
+			</p>
+			<p>
+				<mat-form-field appearance="fill">
+					<mat-label>E-mail do cliente</mat-label>
+					<input matInput type="email" formControlName="email">
+				</mat-form-field>
+			</p>
+		</mat-card-content>
+		<mat-card-actions>
+			<button mat-button (click)="cancel()">Cancelar</button>
+			<ng-container *ngIf="isEdit; else isAdd">
+				<button mat-button type="submit" [disabled]="!clientForm.dirty">Editar</button>
+			</ng-container>
+			<ng-template #isAdd>
+				<button mat-button type="submit" [disabled]="!clientForm.valid">Cadastrar</button>
+			</ng-template>
+			
+		</mat-card-actions>
+	</mat-card>
+</form>

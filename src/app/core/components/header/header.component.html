@@ -1,5 +1,7 @@
 <mat-toolbar color="primary" >
-  <span>VipCommerce - SPA</span>
+  <a [routerLink]="['']">
+    <span>VipCommerce - SPA</span>
+  </a>
   <span class="spacer"></span>
   <button mat-button [matMenuTriggerFor]="productsMenu">
     Produtos
@@ -8,8 +10,11 @@
     <a mat-menu-item [routerLink]="['/products/new']">Cadastrar novo produto</a>
     <a mat-menu-item [routerLink]="['/products']">Listar produtos</a>
   </mat-menu>
-
-  <a mat-button>
+  <button mat-button [matMenuTriggerFor]="clientsMenu">
     Clientes
-  </a>
+  </button>
+  <mat-menu #clientsMenu="matMenu">
+    <a mat-menu-item [routerLink]="['/clients/new']">Cadastrar novo cliente</a>
+    <a mat-menu-item [routerLink]="['/clients']">Listar clientes</a>
+  </mat-menu>
 </mat-toolbar>
