@@ -47,9 +47,11 @@
 				<button mat-button type="submit" [disabled]="!clientForm.dirty">Editar</button>
 			</ng-container>
 			<ng-template #isAdd>
-				<button mat-button type="submit" [disabled]="!clientForm.valid">Cadastrar</button>
+				<button mat-button type="submit" [disabled]="clientForm.value.sex=='Outro'">Cadastrar</button>
 			</ng-template>
-			
+			<p>
+				{{ clientForm.value.sex}}
+			</p>
 		</mat-card-actions>
 	</mat-card>
 </form>
